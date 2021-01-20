@@ -1,0 +1,29 @@
+#skills
+  z-index: 1000
+  border: 2px solid red
+  width: 100%
+  background-color: rgba($color: yellow, $alpha: .8)
+  padding: 20px
+  margin-left: -3000px
+  transition: margin-left 1s
+  clip-path: polygon(-100% 0%, 100% 0, 100% 100%, 40% 110%)
+  
+  & .skills__list
+    display: flex
+    flex-direction: column
+    
+    & .skills__text
+      width: 200px
+      font-size: 1rem
+      margin: 0
+      color: #000
+    
+    & .skills__score
+      background: rgba($color: red, $alpha: .7)
+      height: 15px
+      width: 0
+      transition: width 3s
+      animation: glitch 1500ms infinite
+      
+      &:hover
+        background: rgba($color: deeppink, $alpha: .6)
