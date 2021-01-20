@@ -9,10 +9,27 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _home_Skills__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home/Skills */ "./resources/js/home/Skills.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _infos_Infos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./infos/Infos */ "./resources/js/infos/Infos.js");
+/* harmony import */ var _infos_Skills__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./infos/Skills */ "./resources/js/infos/Skills.js");
 
-var skills = new _home_Skills__WEBPACK_IMPORTED_MODULE_0__.default();
-skills.handle();
+
+
+var infos = new _infos_Infos__WEBPACK_IMPORTED_MODULE_1__.default();
+var skills = new _infos_Skills__WEBPACK_IMPORTED_MODULE_2__.default();
+jquery__WEBPACK_IMPORTED_MODULE_0__('#menu_skills').on('click', function () {
+  infos.handleClick('skills');
+  skills.handleSkillsScore();
+}).on('mouseover', function () {
+  skills.menuSkillOver();
+}).on('mouseout', function () {
+  skills.menuSkillOut();
+});
+jquery__WEBPACK_IMPORTED_MODULE_0__('#menu_contact').on('click', function () {
+  if (infos.infosVisible === 'skills') skills.handleSkillsScore();
+  infos.handleClick('contact');
+});
 
 /***/ }),
 
@@ -29,10 +46,67 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/home/Skills.js":
+/***/ "./resources/js/infos/Infos.js":
 /*!*************************************!*\
-  !*** ./resources/js/home/Skills.js ***!
+  !*** ./resources/js/infos/Infos.js ***!
   \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ Infos
+/* harmony export */ });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Infos = /*#__PURE__*/function () {
+  function Infos() {
+    _classCallCheck(this, Infos);
+
+    this.infosVisible = '';
+  }
+
+  _createClass(Infos, [{
+    key: "handleClick",
+    value: function handleClick(target) {
+      this.infosVisible === target ? this.hideInfos(target) : this.showInfos(target);
+    }
+  }, {
+    key: "showInfos",
+    value: function showInfos(target) {
+      if (this.infosVisible !== '') this.hideInfos(this.infosVisible);
+      jquery__WEBPACK_IMPORTED_MODULE_0__('#' + target).css('margin-left', 0);
+      jquery__WEBPACK_IMPORTED_MODULE_0__('#menu_' + target).css('--primary', 'hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 0.8%))');
+      this.infosVisible = target;
+    }
+  }, {
+    key: "hideInfos",
+    value: function hideInfos(target) {
+      jquery__WEBPACK_IMPORTED_MODULE_0__('#' + target).css('margin-left', -3000);
+      jquery__WEBPACK_IMPORTED_MODULE_0__('#menu_' + target).css('--primary', 'hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 1%), .1)');
+      this.infosVisible = '';
+    }
+  }]);
+
+  return Infos;
+}();
+
+
+
+/***/ }),
+
+/***/ "./resources/js/infos/Skills.js":
+/*!**************************************!*\
+  !*** ./resources/js/infos/Skills.js ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -54,51 +128,23 @@ var Skills = /*#__PURE__*/function () {
   function Skills() {
     _classCallCheck(this, Skills);
 
-    this.skillsVisible = false;
+    this.scoreLoaded = false;
   }
 
   _createClass(Skills, [{
-    key: "handle",
-    value: function handle() {
-      var _this = this;
-
-      jquery__WEBPACK_IMPORTED_MODULE_0__('#menu_skills').on('click', function () {
-        _this.handleClick();
-      }).on('mouseover', function () {
-        _this.menuSkillOver();
-      }).on('mouseout', function () {
-        _this.menuSkillOut();
-      });
-    }
-  }, {
-    key: "handleClick",
-    value: function handleClick() {
-      this.skillsVisible ? this.hideSkills() : this.showSkills();
-      this.skillsVisible = !this.skillsVisible;
-    }
-  }, {
-    key: "showSkills",
-    value: function showSkills() {
-      jquery__WEBPACK_IMPORTED_MODULE_0__('#skills').css('margin-left', 0);
-      jquery__WEBPACK_IMPORTED_MODULE_0__('#menu_skills').css('--primary', 'hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 0.8%))');
-      this.showSkillsScore();
-    }
-  }, {
-    key: "hideSkills",
-    value: function hideSkills() {
-      jquery__WEBPACK_IMPORTED_MODULE_0__('#skills').css('margin-left', -3000);
-      jquery__WEBPACK_IMPORTED_MODULE_0__('#menu_skills').css('--primary', 'hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 1%), .1)');
-      this.hideSkillsScore();
-    }
-  }, {
     key: "menuSkillOver",
     value: function menuSkillOver() {
-      if (!this.skillsVisible) jquery__WEBPACK_IMPORTED_MODULE_0__('#menu_skills').css('--primary', 'hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 0.8%))');
+      if (!this.scoreLoaded) jquery__WEBPACK_IMPORTED_MODULE_0__('#menu_skills').css('--primary', 'hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 0.8%))');
     }
   }, {
     key: "menuSkillOut",
     value: function menuSkillOut() {
-      if (!this.skillsVisible) jquery__WEBPACK_IMPORTED_MODULE_0__('#menu_skills').css('--primary', 'hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 1%), .1)');
+      if (!this.scoreLoaded) jquery__WEBPACK_IMPORTED_MODULE_0__('#menu_skills').css('--primary', 'hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 1%), .1)');
+    }
+  }, {
+    key: "handleSkillsScore",
+    value: function handleSkillsScore() {
+      this.scoreLoaded ? this.hideSkillsScore() : this.showSkillsScore();
     }
   }, {
     key: "showSkillsScore",
@@ -109,11 +155,13 @@ var Skills = /*#__PURE__*/function () {
       jquery__WEBPACK_IMPORTED_MODULE_0__('#skills__mysql .skills__score').css('width', '100%');
       jquery__WEBPACK_IMPORTED_MODULE_0__('#skills__javascript .skills__score').css('width', '70%');
       jquery__WEBPACK_IMPORTED_MODULE_0__('#skills__bootstrap .skills__score').css('width', '60%');
+      this.scoreLoaded = true;
     }
   }, {
     key: "hideSkillsScore",
     value: function hideSkillsScore() {
       jquery__WEBPACK_IMPORTED_MODULE_0__('.skills__score').css('width', '0');
+      this.scoreLoaded = false;
     }
   }]);
 

@@ -10184,7 +10184,7 @@ h3 {
 }
 /** Normalize */
 * {
-  cursor: url("/public/img/cursor.png"), auto;
+  cursor: url("../img/cursor.png") 12.5 12.5, auto;
 }
 
 html, body {
@@ -10196,6 +10196,14 @@ html, body {
 
 h1, h2, h3, h4 {
   margin: 0;
+}
+
+a {
+  color: #000;
+}
+a:hover {
+  text-decoration: none;
+  cursor: url("../img/cursor-hover.png") 12.5 12.5, auto;
 }
 
 /** Cyberpunk Btn */
@@ -10472,7 +10480,7 @@ h1, h2, h3, h4 {
   position: relative;
   width: 100%;
   height: 100%;
-  background: url("/public/img/night-city-wallpaper.jpg") no-repeat left top;
+  background: url("../img/night-city-wallpaper.jpg") no-repeat left top;
   background-size: cover;
   background-color: #900505;
   margin: 0 auto;
@@ -10488,7 +10496,7 @@ h1, h2, h3, h4 {
 }
 #main:after {
   content: "";
-  background: url("/public/img/night-city-wallpaper.jpg") no-repeat left top;
+  background: url("../img/night-city-wallpaper.jpg") no-repeat left top;
   background-size: cover;
   background-color: darkred;
   background-blend-mode: color-burn;
@@ -10501,6 +10509,11 @@ h1, h2, h3, h4 {
   pointer-events: none;
   -webkit-animation: bg-glitch 2000ms infinite;
           animation: bg-glitch 2000ms infinite;
+}
+
+.link__linkedin img {
+  width: 100%;
+  pointer-events: none;
 }
 
 #menu {
@@ -10532,7 +10545,10 @@ h1, h2, h3, h4 {
           user-select: none;
 }
 
-#skills {
+.infos {
+  position: absolute;
+  top: 20px;
+  left: 0;
   z-index: 1000;
   border: 2px solid red;
   width: 100%;
@@ -10543,17 +10559,17 @@ h1, h2, h3, h4 {
   -webkit-clip-path: polygon(-100% 0%, 100% 0, 100% 100%, 20% 110%);
           clip-path: polygon(-100% 0%, 100% 0, 100% 100%, 20% 110%);
 }
-#skills .skills__list {
+.infos .infos__list {
   display: flex;
   flex-direction: column;
 }
-#skills .skills__list .skills__text {
+.infos .infos__list .skills__text {
   width: 200px;
   font-size: 1rem;
   margin: 0;
   color: #000;
 }
-#skills .skills__list .skills__score {
+.infos .infos__list .skills__score {
   background: rgba(255, 0, 0, 0.7);
   height: 15px;
   width: 0;
@@ -10561,7 +10577,7 @@ h1, h2, h3, h4 {
   -webkit-animation: glitch 1500ms infinite;
           animation: glitch 1500ms infinite;
 }
-#skills .skills__list .skills__score:hover {
+.infos .infos__list .skills__score:hover {
   background: rgba(255, 20, 147, 0.6);
 }
 
@@ -10585,6 +10601,10 @@ h1, h2, h3, h4 {
     padding: 20px 0;
   }
 
+  .link__linkedin {
+    width: 300px;
+  }
+
   #menu {
     width: 100%;
     align-items: end;
@@ -10594,10 +10614,12 @@ h1, h2, h3, h4 {
     width: 450px;
   }
 
-  #skills {
+  .infos {
     width: 50%;
+    top: 20px;
+    bottom: 20px;
   }
-  #skills .skills__list .skills__text {
+  .infos .infos__list .skills__text {
     width: 200px;
     font-size: 2rem;
   }
@@ -10612,11 +10634,11 @@ h1, h2, h3, h4 {
     width: 500px;
   }
 
-  #skills {
+  .infos {
     -webkit-clip-path: polygon(-100% 0%, 100% 0, 100% 100%, 30% 110%);
             clip-path: polygon(-100% 0%, 100% 0, 100% 100%, 30% 110%);
   }
-  #skills .skills__list .skills__text {
+  .infos .infos__list .skills__text {
     width: 250px;
     font-size: 2.5rem;
   }

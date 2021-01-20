@@ -1,6 +1,6 @@
 *
   @extend .orbitron
-  cursor: url('/public/img/cursor.png'), auto
+  cursor: url('../img/cursor.png') 12.5 12.5, auto
 
 html, body
   width: 100%
@@ -10,3 +10,10 @@ html, body
   
 h1, h2, h3, h4
   margin: 0
+
+a
+  color: #000
+  
+  &:hover
+    text-decoration: none
+    cursor: url('../img/cursor-hover.png') 12.5 12.5, auto
